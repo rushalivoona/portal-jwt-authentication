@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="login-box">
+        <form [formGroup]="loginform" (submit)="onSubmit(loginform)">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" formControlName='email' id="email" class="form-control"/>
+                <div class="error" *ngIf="formData.email.invalid && formData.email.touched">
+                    <div *ngIf="formData.email.errors.required" >
+                        Enter your email!
+                    </div>
+                    <div *ngIf="formData.email.errors.email" >
+                        Enter correct email!
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" formControlName='password' id="password" class="form-control"/>
+                <div class="error" *ngIf="formData.password.invalid && formData.password.touched">
+                    <div *ngIf="formData.password.errors.required" >
+                        Enter your password !
+                    </div>
+                    <div *ngIf="formData.password.errors.minlength" >
+                        Entered password is {{formData.password.errors.minlength.actualLength}} should be length {{formData.password.errors.minlength.requiredLength}}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="text-align: center;">
+                <button class="btn btn-primary" style="width: 100px;" [disabled]='!loginform.valid'>Login</button>
+            </div>
+            <div class="error" *ngIf="invalidDetails">     
+                Invalid Email/Password!! Please enter correct credentials!         
+            </div>
+            <div style="vertical-align: inherit; font-size: small;">
+                <a routerLink='/register'>Not a user? Register Here!</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+    
+        
+        
+    
+
